@@ -1,0 +1,1 @@
+python3 lexc2dot.py | dot -Tpng -oOldSaxonLexc.png

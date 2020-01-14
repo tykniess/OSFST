@@ -1,0 +1,203 @@
+Alphabet
+	a:a a:e a:ô 		! Normal | Umlaut | Ablaut1 and Ablaut2 |  
+	b:b b:p			! Normal | Final devoicing 
+	c 
+	d 
+	e:e e:i	e:a e:u e:o e:a e:â e:o e:e e:0		! Normal | Umlaut | Ablaut1 | Ablaut2 | Ablaut3 | Ablaut-STR4&5-1 | Ablaut STR4&5-2 | Ablaut-STR4-3 | ABLAUT-STR5-3 | After surface 'e' to prohibit clusters
+	eo
+	f 
+	g 
+	h:h h:g			! Normal | Grammatischer Wechsel 
+	i			 
+	ie:ie			! single phoneme
+	io:io io:iu io:ô io:u io:o io:eo		! Normal | Umlaut | Ablaut 1 | Ablaut 2 | Ablaut 3 | occasional variant
+	iu
+	j 
+	k:k k:c 
+	l 
+	m 
+	n 
+	o			
+	p 
+	q 
+	r 
+	s 
+	t 
+	u:u u:a u:â u:o			! Normal | Ablaut-STR4&5-1 | Ablaut STR4&5-2 | Ablaut STR4&5-3 [e.g. kuman~kam~kâmun-gikoman]
+	v:ƀ
+	w w:u ! Normal | optional [hu] for [hw] after an h, before a vowel
+	x 
+	y 
+	z 
+	î:î î:ê î:i			! Normal | Ablaut1 | Ablaut2 & Ablaut3 [e.g. mîthan ~ mêth ~ midun ~ gimidan]
+	ê:ê ê:ie 			! Normal | Ablaut1 & Alaut2 		[e.g. hêtan ~ hiet ~ hietun ~ gihêtan] 
+	ô:ô ô:io !ô:uo			! Normal | 7th class Ablaut1 & Ablaut2 [e.g. hlôpan ~ hliop ~ hliopun ~ hlôpan] | alternate spelling
+	â:â â:ê 			! Normal | 7th class Ablaut1 & Ablaut2 [e.g. lâtan ~ lêt ~ lêtun ~ gilâtan] 
+	û:û û:ô û:u û:o		! Normal | Ablaut 1 | Ablaut 2 | Ablaut 3 [e.g. lûkan ~ lôk ~ lukun ~ gilokan]
+	đ:đ đ:d			! Free variation in plural conjugations
+	ƀ:ƀ ƀ:f				! Normal | Final Devoicing 
+	th:th th:d		! Normal | Grammatischer Wechsel 
+	¹:0 ²:0 ³:0 ⁴:0		!four contexts for Ablaut
+	₄:0 ₅:0 ₇:0 		!three exceptional strong verb classes
+	%{I%}:i %{I%}:0		!j-infix
+	%{I%^E%}:i %{I%^E%}:e	!i/e in free variation in the stem vowel of the verb 'willian'
+	%{E%^%A%}:e %{E%^%A%}:a		!e/a alternations in dative and genitive
+	%{O%^%A%}:o %{O%^%A%}:a		!o/a alternations in nominative/accusative plural
+	%{U%^%O%}:u %{U%^%O%}:o	!u/o alternations in ô-stem plural
+	%{M%}:m %{M%}:n		!m/n alternation in dative plural
+	%{NAPL%}:0 %{NAPL%}:u	!neuter a-stem plural morpheme; either u (after short stem) or 0 (after heavy stem)
+	%{%^N%}:n %{%^N%}:0	! n-archiphoneme surfaces man_u and man_o, not elsewhere
+	;
+
+Sets
+V = a e i o u %{I%}			;
+ShortV = a e i o u                     ;
+FrontV = a e i %{I%}			;
+BackV = o u			;
+Cns = b c d f g h j k l m n p w r s t v w x y z đ ƀ th ; 
+HighV = i u ;
+
+Rules
+
+! a:b   CONSTRAINT_OPERATOR   LEFT_CONTEXT   _   RIGHT_CONTEXT ;
+
+"Remove morpheme boundary"
+%>:0 <=> _ 			;
+
+"Final Devoicing"
+Vx:Vy <=> _ ( ₄: | ₅: | ₇: ) ( ¹: ) # ;
+        where Vx in ( b ƀ ) 
+              Vy in ( p f )
+        matched ;
+
+"Plural morpheme iađ~iad"			!The verbal plural morpheme iađ is often written iad
+đ:d => i: a: _ # ;
+
+"e:i in Umlaut of strong verbs"
+e:i <=> _ Cns+ %>:  HighV ;			
+
+"e:a in Ablaut1 and Ablaut-STR4&5-1"			! werthan ~ warth; neman ~ nam
+e:a <=> _ Cns+ ( ₄: ) ¹: ;
+
+"e:u in Ablaut2"					! werthan ~ wurdun
+e:u <=> _ Cns+ ²: ;
+
+"e:o in Ablaut3 and Ablaut-STR4-3"			! werthan ~ giwordan ; neman ~ ginoman
+e:o <=> _ Cns+ ( ₄: ) ³: ;
+
+"e:â in Ablaut STR4&5-2"				! neman ~ nâmun
+e:â <=> _ Cns+ ₄: ²: ;
+
+"e:0 to prohibit clusters"
+e:0 <=> _ :e ;						!sundia/-ea/-ie
+
+
+
+
+"a:e in Umlaut and Ablaut in Class 7"
+a:e <=> _ Cns+ %>:  i: ;				! faran ~ feris ; note that this does not apply before [u]
+	_ Cns+ ₇: [ ¹: | ²: ] (%>:) ;			! haldan ~ held
+
+"a:ô in Ablaut1 and Ablaut2"				! faran ~ fôr
+a:ô <=> _ Cns+ [ ¹: | ²: ] ;
+
+
+
+
+"io:iu (Umlaut in present tense)"			! biodan ~ biudu; Class 2 strong verbs
+io:iu <=> _ Cns+ %>:  HighV ; 
+
+"io:ô in Ablaut1"
+io:ô <=> _ Cns+ ¹: ;					! biodan ~ bôd
+
+"io:u in Ablaut2"
+io:u <=> _ Cns+ ²: ;					! biodan ~ budun
+
+"io:o in Ablaut3"					! biodan ~ gibodan
+io:o <=> _ Cns+ ³: ;
+
+
+
+"u:a in Ablaut1 (4th class  only)"
+u:a <=> _ Cns+ ₄: ¹: ;                                  ! kuman ~ kam
+
+"u:â in Ablaut2 (4th class only)"
+u:â <=> _ Cns+ ₄: ²: ;                                  ! kuman ~ kâmun
+
+"u:o in Ablaut3 (4th class only)" 
+u:o <=> _ Cns+ ₄: ³: ;					! kuman ~ gikoman
+
+
+
+!î:î î:ê î:i                     ! Normal | Ablaut1 | Ablaut2 & Ablaut3 [e.g. mîthan ~ mêth ~ midun ~ gimidan]
+
+"î:ê in Ablaut 1"
+î:ê <=> _ Cns+ ¹: ; 
+
+"î:i in Ablaut 2 and Ablaut 3"
+î:i <=> _ Cns+ [ ²: | ³: ] ;
+
+
+
+
+
+!        ê:ê ê:ie                        ! Normal | Ablaut1 & Alaut2             [e.g. hêtan ~ hiet ~ hietun ~ gihêtan]
+
+"ê:ie in Ablaut 1 and 2 of Class VII strong verbs"
+ê:ie <=> _ Cns+ ₇: [ ¹: |  ²:] ( %>: ) ;
+
+
+
+
+
+!        ô:ô ô:io                        ! Normal | 7th class Ablaut1 & Ablaut2 [e.g. hlôpan ~ hliop ~ hliopun ~ hlôpan]
+"ô:io in Ablaut 1 and 2 of Class VII strong verbs"
+ô:io <=> _ Cns+ ₇: [ ¹: | ²:] ( %>: ) ;
+
+
+
+
+
+
+!        â:â â:ê                         ! Normal | 7th class Ablaut1 & Ablaut2 [e.g. lâtan ~ lêt ~ lêtun ~ gilâtan]
+"â:ê in Ablaut 1 and 2 of Class VII strong verbs"
+â:ê <=> _ Cns+ ₇: [ ¹: |  ²:] ( %>: ) ;
+
+!	û:u û:ô û:u û:o		! Normal | Ablaut 1 | Ablaut 2 | Ablaut 3 [e.g. lûkan ~ lôk ~ lukun ~ gilokan] Class II strong verbs
+"û to ô in Ablaut 1 (Pret 1. 3. sg.) of Class II strong verbs"
+û:ô <=> _ Cns+ ¹: ( %>: ) ;
+
+"û to u in Ablaut 2 (Pret pl., 2. sg) of Class II strong verbs"
+û:u <=> _ Cns+ ²: ( %>: ) ;
+
+"û to u in Ablaut 3 (Past participle) of Class II strong verbs"
+û:u <=> _ Cns+ ³: ( %>: ) ;
+
+
+
+"Grammatischer Wechsel"
+Vx:Vy <=> _ Vz: ;
+        where Vx in ( h th h ) !add s~r alternations
+              Vy in ( g d g )
+              Vz in ( ¹ ² ³ )
+        matched ;
+
+
+
+
+
+"Remove j-infix before a vocalic verbal suffix"
+%{I%}:0 <=> _ ( ₄: ) ( ¹: | ²: ) ( >: ) ( ¹: | ²: ) : ;
+
+
+
+
+"Neuter a-stem plural is -u after short stem, zero elsewhere"
+%{NAPL%}:u <=> ShortV: ( Cns: ) ( ShortV+ ) _ ; !not working
+
+"Extraordinary declension of *man*"
+%{%^N%}:n <=> 	m a n _ u	;
+		m a n _ o	;
+
+"optional <hu> for <hw> after before a vowel"
+w:u => h:  _ V: ;
