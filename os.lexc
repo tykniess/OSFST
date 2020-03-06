@@ -1242,7 +1242,7 @@ LEXICON STR-IMPERATIV
 LEXICON WESAN
 %<inf%>:wesan				#;
 %<prespart%>:wesand Adj-ja-jo	;
-%<prespart%>:and ND-Stem-Decline  ;	!participial noun
+%<prespart%>:wesand ND-Stem-Decline  ;	!participial noun !tk check this? this was just 'and' before I edited it.
 
 %<pres%>%<indic%>%<1st%>%<sg%>:bium		#;
 %<pres%>%<indic%>%<1st%>%<sg%>:biun          #;
@@ -1635,6 +1635,7 @@ gî%<prn%>%<pers%>%<2nd%>%<pl%>%<gen%>:iuwer	#	;
 gî%<prn%>%<pers%>%<2nd%>%<pl%>%<gen%>:euwar	#	;
 gî%<prn%>%<pers%>%<2nd%>%<pl%>%<gen%>:euwero	#	;
 gî%<prn%>%<pers%>%<2nd%>%<pl%>%<gen%>:euwera	#	;
+gî%<prn%>%<pers%>%<2nd%>%<pl%>%<gen%>:iuwa	#	; !tk check gallee.
 gî%<prn%>%<pers%>%<2nd%>%<pl%>%<dat%>:eu		#	;
 gî%<prn%>%<pers%>%<2nd%>%<pl%>%<dat%>:iu		#	;
 gî%<prn%>%<pers%>%<2nd%>%<pl%>%<dat%>:iu		#	;
@@ -1705,7 +1706,8 @@ siu%<prn%>%<pers%>%<3rd%>%<fem%>%<pl%>%<acc%>:siu	#	;
 
 LEXICON Possessive-Pronouns
 mîn%<prn%>%<poss%>%<1st%>%<masc%>%<sg%>:mîn	#	;
-thîn%<prn%>%<poss%>%<2nd%>%<masc%>%<sg%>:thîn	#	;
+thîn%<prn%>%<poss%>%<2nd%>%<masc%>%<nom%>%<sg%>:thîn	#	; !tk
+thîn%<prn%>%<poss%>%<2nd%>%<masc%>%<dat%>%<sg%>:thînun	#	; !tk
 sîn%<prn%>%<poss%>%<3rd%>%<masc%>%<sg%>:sîn	#	;
 mîn%<prn%>%<poss%>%<1st%>%<neut%>%<sg%>:mîn	#	;
 thîn%<prn%>%<poss%>%<2nd%>%<neut%>%<sg%>:thîn	#	;
@@ -2084,6 +2086,7 @@ hebbian%<v%>%<wk%>%<class3%>%<pres%>%<indic%>%<1st%>%<sg%>:hebbiu	# ;
 hebbian%<v%>%<wk%>%<class3%>%<pres%>%<indic%>%<pl%>:h%{E%^A%}bbiad	# ;
 hebbian%<v%>%<wk%>%<class3%>%<pres%>%<opt%>%<pl%>habbien	# ;
 hebbian%<v%>%<wk%>%<class3%>%<pret%>%<pl%>:habd%{U%^O%}n	# ;
+hebbian%<v%>%<wk%>%<class3%>%<pret%>%<indic%>%<3rd%>%<sg%>:habd%{E%^A%} # ;
 
 seggian%<v%>%<wk%>%<class3%>%<pres%>%<indic%>%<1st%>%<sg%>:seggea	# ;
 seggian%<v%>%<wk%>%<class3%>%<pres%>%<indic%>%<pl%>:seggead	# ;
@@ -2734,6 +2737,9 @@ LEXICON A-Stem
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!Masc. a-stem!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+firihos%<noun%>%<masc%>%<a-stem%>%<gen%>%<pl%>:firiho	# ;	! !tk manually added
+
 
 middilgard%<noun%>%<masc%>%<a-stem%>:middilgard Masc-A-Stem ;	!Manually entered. tk need to redo this section to include forms with 'as., st. M. (a?)' in dict
 crist%<noun%>%<masc%>%<a-stem%>:crist Masc-A-Stem ; !Manually entered, tk no proper names in dictionary
@@ -5056,7 +5062,7 @@ middilgard%<noun%>%<fem%>%<athem%>:middilgard Athem-Fem		;	!	middilgard* 41, mi-
 naht%<noun%>%<fem%>%<athem%>:naht Athem-Fem		;	!	naht 35, as., st. F. (athem.): nhd. Nacht; ne. night (N.); W.: mnd. nacht, M., F., Nacht
 werold%<noun%>%<fem%>%<athem%>:w%{E%^A%}rold Athem-Fem		;	!	werold* 172, warold, worold, wer-o-l-d*, war-o-l-d*, wor-o-l-d*, as., st. M. (athem.), st. F. (athem.): nhd. Welt, Erde; ne. world (N.); W.: mnd. werlt, werelt, werlde, F., Welt, Schöpfung, Zeitalter
 werold%<noun%>%<fem%>%<athem%>:worold Athem-Fem		;	!	werold* 172, warold, worold, wer-o-l-d*, war-o-l-d*, wor-o-l-d*, as., st. M. (athem.), st. F. (athem.): nhd. Welt, Erde; ne. world (N.); W.: mnd. werlt, werelt, werlde, F., Welt, Schöpfung, Zeitalter
-
+!tk other
 
 LEXICON StrongVerbs
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

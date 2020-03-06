@@ -8,7 +8,7 @@ covered_unique_words  = []
 covered_total_words = []
 words_not_covered = []
 
-heliand = 'heliand/hel-unique-tokens-clean.txt'
+heliand = 'heliand/hel-unique-tokens.txt'
 heliand_total = 'heliand/clean.txt'
 muspilli = 'forms-prefixed.txt'
 
